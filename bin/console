@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "rails/pattern_matching"
+
+require "irb"
+IRB.start(__FILE__)

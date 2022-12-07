@@ -1,0 +1,44 @@
+PATH
+  remote: .
+  specs:
+    rails-pattern_matching (0.1.0)
+      activemodel
+      activerecord
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (7.0.4)
+      activesupport (= 7.0.4)
+    activerecord (7.0.4)
+      activemodel (= 7.0.4)
+      activesupport (= 7.0.4)
+    activesupport (7.0.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    concurrent-ruby (1.1.10)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
+    minitest (5.16.3)
+    power_assert (2.0.2)
+    rake (13.0.6)
+    sqlite3 (1.5.4-arm64-darwin)
+    test-unit (3.5.5)
+      power_assert
+    tzinfo (2.0.5)
+      concurrent-ruby (~> 1.0)
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  bundler
+  rails-pattern_matching!
+  rake
+  sqlite3
+  test-unit
+
+BUNDLED WITH
+   2.3.24
