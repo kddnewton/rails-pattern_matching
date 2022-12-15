@@ -26,7 +26,7 @@ GEM
     rake (13.0.6)
     sqlite3 (1.5.4-arm64-darwin)
     sqlite3 (1.5.4-x86_64-linux)
-    test-unit (3.5.5)
+    test-unit (3.5.7)
       power_assert
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
