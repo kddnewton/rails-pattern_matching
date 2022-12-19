@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails-pattern_matching (0.1.0)
+    rails-pattern_matching (0.2.0)
       activemodel
       activerecord
 
