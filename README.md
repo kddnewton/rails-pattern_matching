@@ -1,5 +1,8 @@
 # rails-pattern_matching
 
+[![Build Status](https://github.com/kddnewton/rails-pattern_matching/workflows/Main/badge.svg)](https://github.com/kddnewton/rails-pattern_matching/actions)
+[![Gem](https://img.shields.io/gem/v/rails-pattern_matching.svg)](https://rubygems.org/gems/rails-pattern_matching)
+
 This gem provides the pattern matching interface for `ActiveModel::AttributeMethods`, `ActiveRecord::Base`, and `ActiveRecord::Relation`.
 
 That means it allows you to write code using the pattern matching against your Rails models like the following example:

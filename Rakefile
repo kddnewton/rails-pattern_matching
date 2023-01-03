@@ -2,6 +2,7 @@
 
 require "bundler/gem_tasks"
 require "rake/testtask"
+require "syntax_tree/rake_tasks"
 
 Rake::TestTask.new do |t|
   t.libs << "test"
@@ -10,3 +11,11 @@ Rake::TestTask.new do |t|
 end
 
 task default: :test
+
+configure = ->(task) do
+  task.source_files =
+    FileList[%w[Gemfile Rakefile *.gemspec lib/**/*.rb test/**/*.rb]]
+end
+
+SyntaxTree::Rake::CheckTask.new(&configure)
+SyntaxTree::Rake::WriteTask.new(&configure)

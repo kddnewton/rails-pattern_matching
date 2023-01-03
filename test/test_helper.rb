@@ -4,7 +4,10 @@ require "bundler/setup"
 require "rails/pattern_matching"
 require "test-unit"
 
-ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+ActiveRecord::Base.establish_connection(
+  adapter: "sqlite3",
+  database: ":memory:"
+)
 ActiveRecord::Base.logger = Logger.new("/dev/null")
 
 ActiveRecord::Schema.define do

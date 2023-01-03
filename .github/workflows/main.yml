@@ -1,25 +1,22 @@
 name: Main
 
 on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
-
-permissions:
-  contents: read
+- push
+- pull_request
 
 jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
+    env:
+      CI: true
     steps:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'
+        ruby-version: '3.2'
         bundler-cache: true
-    - name: Test
-      run: bundle exec rake
+    - name: Lint and test
+      run: |
+        bundle exec rake stree:check
+        bundle exec rake
