@@ -28,7 +28,7 @@ GEM
     rake (13.0.6)
     sqlite3 (1.5.4)
       mini_portile2 (~> 2.8.0)
-    syntax_tree (5.1.0)
+    syntax_tree (5.2.0)
       prettier_print (>= 1.2.0)
     test-unit (3.5.7)
       power_assert
@@ -36,7 +36,6 @@ GEM
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
-  arm64-darwin-21
   arm64-darwin-22
   x86_64-linux
 
