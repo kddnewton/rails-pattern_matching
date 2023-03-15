@@ -8,20 +8,20 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.4.2)
-      activesupport (= 7.0.4.2)
-    activerecord (7.0.4.2)
-      activemodel (= 7.0.4.2)
-      activesupport (= 7.0.4.2)
-    activesupport (7.0.4.2)
+    activemodel (7.0.4.3)
+      activesupport (= 7.0.4.3)
+    activerecord (7.0.4.3)
+      activemodel (= 7.0.4.3)
+      activesupport (= 7.0.4.3)
+    activesupport (7.0.4.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    minitest (5.17.0)
+    minitest (5.18.0)
     power_assert (2.0.3)
     prettier_print (1.2.0)
     rake (13.0.6)
@@ -31,7 +31,7 @@ GEM
       prettier_print (>= 1.2.0)
     test-unit (3.5.7)
       power_assert
-    tzinfo (2.0.5)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
 
 PLATFORMS
