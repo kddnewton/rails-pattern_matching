@@ -23,11 +23,11 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.18.0)
     power_assert (2.0.3)
-    prettier_print (1.2.0)
+    prettier_print (1.2.1)
     rake (13.0.6)
     sqlite3 (1.6.1-arm64-darwin)
     sqlite3 (1.6.1-x86_64-linux)
-    syntax_tree (6.0.2)
+    syntax_tree (6.1.0)
       prettier_print (>= 1.2.0)
     test-unit (3.5.7)
       power_assert
