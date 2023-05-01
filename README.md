@@ -22,26 +22,27 @@ end
 module PostsHelper
   def comment_header_for(post)
     case post
-    # Here we're matching against an attribute on the post that is an
-    # association. It will go through the association and then match against the
-    # records in the relation.
     in { comments: [] }
+      # Here we're matching against an attribute on the post that is an
+      # association. It will go through the association and then match against
+      # the records in the relation.
       "No comments yet"
-    # Here we're searching for a comment that has the same user_id as the post.
-    # We can do this with the "find" pattern. This syntax is all baked into
-    # Ruby, so we don't have to do anything other than define the requisite
-    # deconstruct methods that are used by the pattern matching.
-    in { comments: [*, { user_id: ^(post.user_id ) }, *] }
+    in { user_id:, comments: [*, { user_id: ^user_id }, *] }
+      # Here we're searching for a comment that has the same user_id as the
+      # post. We can do this with the "find" pattern. This syntax is all baked
+      # into Ruby, so we don't have to do anything other than define the
+      # requisite deconstruct methods that are used by the pattern matching.
       "Host replied"
-    # Here we're extracting the first comment out of the comments association.
-    in { comments: [comment] }
-      "One comment"
-    # Here we provide a default in case none of the above match. Since we have
-    # already matched against an empty array of comments and a single element
-    # array, we know that there are at least two comments. We can get the length
-    # of the comments association by capturing the comments association in the
-    # pattern itself and then using it.
+    in { comments: [{ user: { name: } }] }
+      # Here we're extracting the first comment out of the comments association
+      # and using its associated user's name in the header.
+      "One comment from #{name}"
     in { comments: }
+      # Here we provide a default in case none of the above match. Since we have
+      # already matched against an empty array of comments and a single element
+      # array, we know that there are at least two comments. We can get the
+      # length of the comments association by capturing the comments association
+      # in the pattern itself and then using it.
       "#{comments.length} comments"
     end
   end
