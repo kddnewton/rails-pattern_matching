@@ -29,7 +29,7 @@ GEM
     sqlite3 (1.6.3-x86_64-linux)
     syntax_tree (6.1.1)
       prettier_print (>= 1.2.0)
-    test-unit (3.6.0)
+    test-unit (3.6.1)
       power_assert
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
