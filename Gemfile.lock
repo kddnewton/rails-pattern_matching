@@ -8,12 +8,12 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (7.0.6)
-      activesupport (= 7.0.6)
-    activerecord (7.0.6)
-      activemodel (= 7.0.6)
-      activesupport (= 7.0.6)
-    activesupport (7.0.6)
+    activemodel (7.0.7)
+      activesupport (= 7.0.7)
+    activerecord (7.0.7)
+      activemodel (= 7.0.7)
+      activesupport (= 7.0.7)
+    activesupport (7.0.7)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -21,7 +21,7 @@ GEM
     concurrent-ruby (1.2.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    minitest (5.18.1)
+    minitest (5.19.0)
     power_assert (2.0.3)
     prettier_print (1.2.1)
     rake (13.0.6)
