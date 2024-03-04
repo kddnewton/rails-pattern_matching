@@ -40,4 +40,39 @@ class PatternMatchingTest < Test::Unit::TestCase
     relation = post.deconstruct_keys([:comments]).fetch(:comments)
     assert_equal [comment], relation.deconstruct
   end
+
+  test "params unpermitted" do
+    params = build_params({})
+
+    assert_raises(ArgumentError) { params.deconstruct_keys(%i[foo]) }
+    assert_raises(ArgumentError) { params.deconstruct_keys(nil) }
+  end
+
+  test "params" do
+    params = build_params({ "foo" => 1, "bar" => 2, "baz" => 3 })
+    params = params.permit(:foo, :bar)
+
+    assert_equal(1, params.deconstruct_keys(%i[foo])[:foo])
+  end
+
+  test "params **" do
+    params = build_params({ "foo" => 1, "bar" => 2, "baz" => 3 })
+    params = params.permit(:foo, :bar)
+
+    assert_equal({ "foo" => 1, "bar" => 2 }, params.deconstruct_keys(nil))
+  end
+
+  test "params nested" do
+    params = build_params({ "foo" => { "bar" => 1, "baz" => 2, "qux" => 3 } })
+    params = params.require(:foo).permit(:bar, :baz)
+
+    assert_equal(1, params.deconstruct_keys(%i[bar])[:bar])
+    assert_equal({ "bar" => 1, "baz" => 2 }, params.deconstruct_keys(nil))
+  end
+
+  private
+
+  def build_params(params)
+    ActionController::Parameters.new(params)
+  end
 end
