@@ -2,10 +2,14 @@
 
 require "active_model"
 require "active_record"
+require "action_controller"
 require "rails/pattern_matching/version"
 
 module Rails
   module PatternMatching
+    # This error is raised when the pattern matching behavior is already
+    # defined in a class or module that we're trying to extend. We want to be
+    # careful not to silently override the behavior that's already there.
     class Error < StandardError
       def initialize(context)
         super(<<~MSG)
@@ -159,6 +163,58 @@ module ActiveModel::AttributeMethods
       # If we haven't been given keys, then the user wants to grab up all of the
       # attributes for this object.
       attributes.transform_keys(&:to_sym)
+    end
+  end
+end
+
+class ActionController::Parameters
+  if method_defined?(:deconstruct_keys)
+    raise Rails::PatternMatching::Error, "ActionController::Parameters"
+  end
+
+  # Returns a hash of parameters for the given keys. Provides the pattern
+  # matching interface for matching against hash patterns. For example:
+  #
+  #     class PostsController < ApplicationController
+  #       before_action :find_post
+  #
+  #       # PATCH /posts/:id
+  #       def update
+  #         case post_params
+  #         in { published: true, ** } if !can_publish?(current_user)
+  #           render :edit, alert: "You are not authorized to publish posts"
+  #         in permitted if @post.update(permitted)
+  #           redirect_to @post, notice: "Post was successfully updated"
+  #         else
+  #           render :edit
+  #         end
+  #       end
+  #
+  #       private
+  #
+  #       def find_post
+  #         @post = Post.find(params[:id])
+  #       end
+  #
+  #       def post_params
+  #         params.require(:post).permit(:title, :body, :published)
+  #       end
+  #     end
+  #
+  # Note that for security reasons, this method will only deconstruct keys that
+  # have been explicitly permitted. This is to avoid the potential accidental
+  # misuse of the `**` operator.
+  #
+  # Note: as an optimization, Hash#deconstruct_keys (and therefore
+  # ActiveSupport::HashWithIndifferentAccess#deconstruct_keys) always returns
+  # itself. This works because the return value then has #[] called on it, so
+  # everything works out. This can yield some somewhat surprising (albeit
+  # correct) results if you call this method manually.
+  def deconstruct_keys(keys)
+    if permitted?
+      to_h.deconstruct_keys(keys)
+    else
+      raise ArgumentError, "Only permitted parameters can be deconstructed."
     end
   end
 end

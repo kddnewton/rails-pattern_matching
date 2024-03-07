@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activemodel"
   spec.add_dependency "activerecord"
+  spec.add_dependency "actionpack"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"

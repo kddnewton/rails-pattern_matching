@@ -3,9 +3,9 @@
 [![Build Status](https://github.com/kddnewton/rails-pattern_matching/workflows/Main/badge.svg)](https://github.com/kddnewton/rails-pattern_matching/actions)
 [![Gem](https://img.shields.io/gem/v/rails-pattern_matching.svg)](https://rubygems.org/gems/rails-pattern_matching)
 
-This gem provides the pattern matching interface for `ActiveModel::AttributeMethods`, `ActiveRecord::Base`, and `ActiveRecord::Relation`.
+This gem provides the pattern matching interface for `ActionController::Parameters`, `ActiveModel::AttributeMethods`, `ActiveRecord::Base`, and `ActiveRecord::Relation`.
 
-That means it allows you to write code using the pattern matching against your Rails models like the following example:
+That means it allows you to write code using pattern matching within your Rails applications like the following examples:
 
 ```ruby
 # app/models/post.rb
@@ -16,6 +16,30 @@ end
 # app/models/comment.rb
 class Comment < ApplicationRecord
   belongs_to :post
+end
+
+# app/controllers/posts_controller.rb
+class PostsController < ApplicationController
+  def update
+    @post = Post.find(params[:id])
+
+    case params.require(:post).permit(:title, :body, :published)
+    in { published: true } if !can_publish?(@post, current_user)
+      # Here we are matching against a single parameter with a guard clause.
+      # This allows us to express both the value check and the authorization
+      # check in a single line.
+      render :edit, alert: "You are not authorized to publish this post"
+    in permitted if @post.update(permitted)
+      # Here we are grabbing the entire set of parameters and then using it to
+      # update the post. If the update succeeds, this branch will be taken.
+      redirect_to @post, notice: "Post was successfully updated"
+    else
+      # Here we are providing a default in case none of the above match. This
+      # will be taken if the update fails, and presumably the view will render
+      # appropriate error messages.
+      render :edit
+    end
+  end
 end
 
 # app/helpers/posts_helper.rb
@@ -32,7 +56,7 @@ module PostsHelper
       # post. We can do this with the "find" pattern. This syntax is all baked
       # into Ruby, so we don't have to do anything other than define the
       # requisite deconstruct methods that are used by the pattern matching.
-      "Host replied"
+      "Author replied"
     in { comments: [{ user: { name: } }] }
       # Here we're extracting the first comment out of the comments association
       # and using its associated user's name in the header.
