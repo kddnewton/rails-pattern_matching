@@ -76,7 +76,7 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rake (13.1.0)
+    rake (13.2.0)
     ruby2_keywords (0.0.5)
     sqlite3 (1.7.3-arm64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
