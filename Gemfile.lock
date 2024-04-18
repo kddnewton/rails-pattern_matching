@@ -42,29 +42,28 @@ GEM
       mutex_m
       tzinfo (~> 2.0)
     base64 (0.2.0)
-    bigdecimal (3.1.6)
+    bigdecimal (3.1.7)
     builder (3.2.4)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
-    drb (2.2.0)
-      ruby2_keywords
+    drb (2.2.1)
     erubi (1.12.0)
-    i18n (1.14.1)
+    i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    minitest (5.22.2)
+    mini_portile2 (2.8.6)
+    minitest (5.22.3)
     mutex_m (0.2.0)
-    nokogiri (1.16.2-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.4)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     power_assert (2.0.3)
     prettier_print (1.2.1)
     racc (1.7.3)
-    rack (3.0.9.1)
+    rack (3.0.10)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -77,9 +76,8 @@ GEM
       loofah (~> 2.21)
       nokogiri (~> 1.14)
     rake (13.2.1)
-    ruby2_keywords (0.0.5)
-    sqlite3 (1.7.3-arm64-darwin)
-    sqlite3 (1.7.3-x86_64-linux)
+    sqlite3 (1.7.3)
+      mini_portile2 (~> 2.8.0)
     syntax_tree (6.2.0)
       prettier_print (>= 1.2.0)
     test-unit (3.6.2)
@@ -90,13 +88,14 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
   bundler
   rails-pattern_matching!
   rake
-  sqlite3
+  sqlite3 (~> 1.4)
   syntax_tree
   test-unit
 
