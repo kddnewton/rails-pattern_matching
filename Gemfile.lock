@@ -81,8 +81,8 @@ GEM
       nokogiri (~> 1.14)
     rake (13.2.1)
     securerandom (0.3.1)
-    sqlite3 (2.1.1-arm64-darwin)
-    sqlite3 (2.1.1-x86_64-linux-gnu)
+    sqlite3 (2.2.0-arm64-darwin)
+    sqlite3 (2.2.0-x86_64-linux-gnu)
     syntax_tree (6.2.0)
       prettier_print (>= 1.2.0)
     test-unit (3.6.2)
@@ -101,7 +101,7 @@ DEPENDENCIES
   bundler
   rails-pattern_matching!
   rake
-  sqlite3 (~> 2.1)
+  sqlite3 (~> 2.2)
   syntax_tree
   test-unit
 
