@@ -64,7 +64,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
-    power_assert (2.0.3)
+    power_assert (2.0.4)
     prettier_print (1.2.1)
     racc (1.8.1)
     rack (3.1.8)
@@ -85,7 +85,7 @@ GEM
     sqlite3 (2.3.0-x86_64-linux-gnu)
     syntax_tree (6.2.0)
       prettier_print (>= 1.2.0)
-    test-unit (3.6.2)
+    test-unit (3.6.3)
       power_assert
     timeout (0.4.2)
     tzinfo (2.0.6)
