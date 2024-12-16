@@ -87,7 +87,7 @@ GEM
       prettier_print (>= 1.2.0)
     test-unit (3.6.5)
       power_assert
-    timeout (0.4.2)
+    timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (1.0.2)
