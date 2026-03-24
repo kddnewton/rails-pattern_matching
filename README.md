@@ -1,5 +1,6 @@
 # rails-pattern_matching
 
+[![Hypercommit](https://img.shields.io/badge/Hypercommit-DB2475)](https://hypercommit.com/rails-pattern-matching)
 [![Build Status](https://github.com/kddnewton/rails-pattern_matching/workflows/Main/badge.svg)](https://github.com/kddnewton/rails-pattern_matching/actions)
 [![Gem](https://img.shields.io/gem/v/rails-pattern_matching.svg)](https://rubygems.org/gems/rails-pattern_matching)
 
