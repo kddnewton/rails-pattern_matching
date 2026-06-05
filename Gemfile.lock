@@ -89,7 +89,7 @@ GEM
     sqlite3 (2.9.4-x86_64-linux-gnu)
     syntax_tree (6.3.0)
       prettier_print (>= 1.2.0)
-    test-unit (3.7.7)
+    test-unit (3.7.8)
       power_assert
     timeout (0.6.1)
     tzinfo (2.0.6)
