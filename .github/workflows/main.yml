@@ -5,18 +5,32 @@ on:
 - pull_request
 
 jobs:
-  ci:
-    name: CI
+  format:
     runs-on: ubuntu-latest
-    env:
-      CI: true
     steps:
     - uses: actions/checkout@master
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '4.0'
         bundler-cache: true
-    - name: Lint and test
-      run: |
-        bundle exec rake stree:check
-        bundle exec rake
+    - run: bundle exec rake stree:check
+  versions:
+    uses: ruby/actions/.github/workflows/ruby_versions.yml@master
+    with:
+      engine: cruby
+  test:
+    needs: versions
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ${{ fromJson(needs.versions.outputs.versions) }}
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@master
+    - if: matrix.ruby == 'head'
+      run: rm Gemfile.lock
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: bundle exec rake test
