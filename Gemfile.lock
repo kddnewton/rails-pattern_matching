@@ -70,7 +70,7 @@ GEM
     prettier_print (1.2.1)
     prism (1.9.0)
     racc (1.8.1)
-    rack (3.2.6)
+    rack (3.2.7)
     rack-session (2.1.2)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
