@@ -6,6 +6,6 @@ gemspec
 
 gem "bundler"
 gem "rake"
-gem "sqlite3", "~> 2.9"
+gem "sqlite3", "~> 2.10"
 gem "syntax_tree"
 gem "test-unit"
